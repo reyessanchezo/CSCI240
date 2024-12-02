@@ -17,7 +17,8 @@ int main()
 {
     cout << "Testing...!\n creating maze";
 
-    Maze::Maze(ROWS, COLS);
+    Maze maze;
+    
     cout << "Created\n";
 
     cout << "All done !!\n";
