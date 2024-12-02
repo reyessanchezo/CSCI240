@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{a2a9d566-5274-4186-b069-973ef71e05bd}</ProjectGuid>
-    <RootNamespace>My240Final</RootNamespace>
+    <ProjectGuid>{fa852c07-3a75-45ef-92b7-d7497e9f1901}</ProjectGuid>
+    <RootNamespace>FinalProject</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="240Final.cpp" />
-    <ClCompile Include="Maze.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Maze.h" />
+    <ClCompile Include="FinalProject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
