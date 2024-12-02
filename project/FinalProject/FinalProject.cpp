@@ -15,7 +15,8 @@ using namespace std;
 int main()
 {
     cout << "Testing...!\n creating maze";
-    const int rows = 5;
+
+	const int rows = 5;
     const int cols = 5;
 
     Maze maze(rows, cols);
