@@ -10,14 +10,15 @@ Might include test for optimal path
 
 using namespace std;
 
-#define ROWS = 5;
-#define COLS = 5;
+
 
 int main()
 {
     cout << "Testing...!\n creating maze";
+    const int rows = 5;
+    const int cols = 5;
 
-    Maze maze;
+    Maze maze(rows, cols);
     
     cout << "Created\n";
 
