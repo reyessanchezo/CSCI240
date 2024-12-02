@@ -48,7 +48,7 @@ void Maze::displayMaze() const {
 // Function to set a specific cell in the maze
 void Maze::setCell(int r, int c, int value) const
 {
-    if (r >= 0 && r < rows && c >= 0 && c < cols) {
+    if (r >= 0 && r < rows && c >= 0 && c < cols) { // bounds
         maze[r][c] = value;
     }
 }
