@@ -6,6 +6,7 @@ Maze Solver using two frameworks (stack/queue, queue/array)
 Might include test for optimal path
 */
 #include <iostream>
+#include "Maze.h"
 
 using namespace std;
 
