@@ -15,16 +15,17 @@ using namespace std;
 
 int main()
 {
-	cout << "Testing...!\n creating maze\n";
+	cout << "Testing...!\n";
 
 	const int rows = 5;
 	const int cols = 5;
 
-	Maze maze;
+	Maze maze(rows,cols);
+	maze.createMaze();
+	maze.displayMaze();
+	
 
-	cout << "Created\n";
-
-	cout << "All done !!\n";
+	cout << "All done !!\n\n\n\n"; // lots of space for my output window
 	return 0;
 }
 
