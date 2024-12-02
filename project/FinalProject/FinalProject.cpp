@@ -15,9 +15,10 @@ using namespace std;
 
 int main()
 {
-    cout << "Testing...!\n";
+    cout << "Testing...!\n creating maze";
 
-
+    Maze::Maze(ROWS, COLS);
+    cout << "Created\n";
 
     cout << "All done !!\n";
     return 0;
