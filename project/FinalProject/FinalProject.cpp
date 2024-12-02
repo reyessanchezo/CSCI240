@@ -10,11 +10,13 @@ Might include test for optimal path
 
 using namespace std;
 
-
+define rows = 5, cols = 5;
 
 int main()
 {
-    cout << "Hello again World!\n";
+    cout << "Testing...!\n";
+
+
 
     cout << "All done !!\n";
     return 0;
