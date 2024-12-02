@@ -10,7 +10,8 @@ Might include test for optimal path
 
 using namespace std;
 
-define rows = 5, cols = 5;
+#define ROWS = 5;
+#define COLS = 5;
 
 int main()
 {
