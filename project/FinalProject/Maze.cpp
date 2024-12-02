@@ -1,10 +1,25 @@
 #include "Maze.h"
+#include "Maze.h"
 #include <ctime>
 #include <cstdlib>
 using namespace std;
 
 // Constructor to initialize the maze with given dimensions
 Maze::Maze(int r, int c) : rows(r), cols(c) {
+    maze = new int* [rows];
+    for (int i = 0; i < rows; ++i) {
+        maze[i] = new int[cols];
+        for (int j = 0; j < cols; ++j) {
+            maze[i][j] = 0; // Initialize all cells to 0
+        }
+    }
+}
+
+Maze::Maze()
+{
+    rows = 1;
+    cols = 1;
+
     maze = new int* [rows];
     for (int i = 0; i < rows; ++i) {
         maze[i] = new int[cols];
