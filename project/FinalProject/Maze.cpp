@@ -80,6 +80,7 @@ void Maze::clearMaze() const
 // Function to display the maze
 void Maze::displayMaze() const
 {
+	std::cout << '\n';
 	for (int i = 0; i < rows; ++i)
 	{
 		for (int j = 0; j < cols; ++j)
