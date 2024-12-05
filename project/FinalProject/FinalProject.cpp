@@ -6,8 +6,9 @@ Maze Solver using two frameworks (stack/queue, queue/array)
 Might include test for optimal path
 */
 #include <iostream>
-
+#include "Queue.h"
 #include "Maze.h"
+
 
 using namespace std;
 
@@ -15,12 +16,12 @@ using namespace std;
 
 int main()
 {
-	cout << "Testing...!\n";
+	int square_size = 10;
 
-	const int rows = 10;
-	const int cols = 10;
+	cout << "Testing...!\n" << "enter maze size (square): \n";
+	cin >> square_size;
 
-	Maze maze(rows,cols);
+	Maze maze(square_size,square_size);
 	maze.createMaze();
 	maze.displayMaze();
 	maze.remakeMaze();
