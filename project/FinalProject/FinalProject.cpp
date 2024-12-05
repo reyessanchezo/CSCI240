@@ -17,8 +17,8 @@ int main()
 {
 	cout << "Testing...!\n";
 
-	const int rows = 5;
-	const int cols = 5;
+	const int rows = 10;
+	const int cols = 10;
 
 	Maze maze(rows,cols);
 	maze.createMaze();
@@ -27,6 +27,6 @@ int main()
 	maze.displayMaze();
 	
 
-	cout << "All done !!\n\n\n\n"; // lots of space for my output window
+	cout << "\nAll done !!\n\n\n\n"; // lots of space for my output window
 	return 0;
 }
