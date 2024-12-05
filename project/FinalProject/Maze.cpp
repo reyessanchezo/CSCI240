@@ -54,7 +54,7 @@ Maze::~Maze()
 // Function to create a random maze
 void Maze::createMaze() const
 {
-	srand(time(0));
+	srand(time(1));
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
@@ -66,15 +66,17 @@ void Maze::createMaze() const
 	maze[rows - 1][cols - 1] = 0; // Ensure end point is open
 }
 
-void Maze::clearMaze() const
+void Maze::remakeMaze() const
 {
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
 		{
-			maze[i][j] = NULL; // Randomly assign 0 or 1
+			maze[i][j] = NULL; // Reset every cell
 		}
 	}
+	this->createMaze();
+
 }
 
 // Function to display the maze
