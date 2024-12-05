@@ -21,7 +21,7 @@ public:
     void createMaze() const;
 
     // Function to clear the maze
-    void clearMaze() const;
+    void remakeMaze() const;
 
     // Function to display the maze
     void displayMaze() const;
