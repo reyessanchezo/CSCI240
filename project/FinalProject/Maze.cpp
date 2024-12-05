@@ -54,7 +54,7 @@ Maze::~Maze()
 // Function to create a random maze
 void Maze::createMaze() const
 {
-	srand(time(1));
+	srand(time(0));
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
