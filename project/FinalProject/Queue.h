@@ -1,5 +1,5 @@
 /*
- * Queue class from zybooks
+ * Queue class from ZyBooks
  * 
  */
 #ifndef QUEUE_H
