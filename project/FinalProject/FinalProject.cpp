@@ -19,9 +19,10 @@ int main()
 	int square_size = 10;
 
 	cout << "Testing...!\n" << "enter maze size (square): \n";
-	cin >> square_size;
 
+	cin >> square_size;
 	Maze maze(square_size,square_size);
+
 	maze.createMaze();
 	maze.displayMaze();
 	maze.remakeMaze();
