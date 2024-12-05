@@ -23,6 +23,8 @@ int main()
 	Maze maze(rows,cols);
 	maze.createMaze();
 	maze.displayMaze();
+	maze.remakeMaze();
+	maze.displayMaze();
 	
 
 	cout << "All done !!\n\n\n\n"; // lots of space for my output window
