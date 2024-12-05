@@ -87,9 +87,20 @@ void Maze::displayMaze() const
 	{
 		for (int j = 0; j < cols; ++j)
 		{
-			std::cout << (maze[i][j] == 1 ? "#" : ".") << " ";
+			if (i == 0 && j == 0)
+			{
+				std::cout << "start \t> ";
+			}
+			else if (i == rows - 1 && j == cols - 1)
+			{
+				std::cout << "> Exit ";
+			}
+			else
+			{
+				std::cout << (maze[i][j] == 1 ? "#" : ".") << " ";
+			}
 		}
-		std::cout << '\n';
+		std::cout << '\n' << '\t';
 	}
 }
 
