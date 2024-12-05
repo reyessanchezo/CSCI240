@@ -1,6 +1,9 @@
 #include "Maze.h"
 #include <ctime>
 #include <cstdlib>
+#include <vector>
+
+#include "Queue.h"
 using namespace std;
 
 // Constructor to initialize the maze with given dimensions
@@ -122,4 +125,40 @@ int Maze::getCell(int r, int c) const
 		return maze[r][c];
 	}
 	return -1; // Return -1 if out of bounds
+}
+
+bool Maze::solveMazeBFS()
+{
+	Queue queue;
+	vector<std::vector<bool>> visited(rows, std::vector<bool>(cols, false));
+	queue.Enqueue(0 * cols + 0);
+	// Encode cell (0, 0) as a single integer
+	visited[0][0] = true;
+	while (!queue.IsEmpty())
+	{
+		int encoded = queue.Dequeue();
+		int currentX = encoded / cols;
+		int currentY = encoded % cols;
+		// Check if we reached the destination
+		if (currentX == rows - 1 && currentY == cols - 1)
+		{
+			std::cout << "Maze solved!" << std::endl;
+			return true;
+		}
+		// Possible directions: right, down, left, up
+		int directions[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+		for (auto& dir : directions)
+		{
+			int newX = currentX + dir[0];
+			int newY = currentY + dir[1];
+			if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && (maze[newX][newY] == 0) && !visited[newX][newY])
+			{
+				queue.Enqueue(newX * cols + newY);
+				// Encode new cell
+				visited[newX][newY] = true;
+			}
+		}
+	}
+	std::cout << "No solution found." << std::endl;
+	return false;
 }
