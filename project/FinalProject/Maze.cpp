@@ -142,7 +142,7 @@ bool Maze::solveMazeBFS()
 		// Check if we reached the destination
 		if (currentX == rows - 1 && currentY == cols - 1)
 		{
-			std::cout << "Maze solved!" << std::endl;
+			std::cout << "Maze solved!" << '\n';
 			return true;
 		}
 		// Possible directions: right, down, left, up
@@ -159,6 +159,6 @@ bool Maze::solveMazeBFS()
 			}
 		}
 	}
-	std::cout << "No solution found." << std::endl;
+	std::cout << "No solution found." << '\n';
 	return false;
 }

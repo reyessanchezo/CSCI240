@@ -27,12 +27,12 @@ int main()
 	maze.displayMaze();
 
 	maze.solveMazeBFS();
-	cout << "new maze? 1 for yes, 0 for no(exit):";
+	cout << "new maze? 1 for yes, 0 for no(exit): ";
 	cin >> go;
 
 	while (go == 1)
 	{
-		cout << "enter new maze size (square)";
+		cout << "enter new maze size (square) ";
 		cin >> square_size;
 		Maze new_maze(square_size, square_size);
 
@@ -40,6 +40,8 @@ int main()
 		maze.displayMaze();
 		cout << "\n solving...\n";
 		maze.solveMazeBFS();
+		cout << "new maze? 1 for yes, 0 for no(exit): ";
+		cin >> go;
 	}
 
 	cout << "\nAll done !!\n\n\n\n"; // lots of space for my output window
