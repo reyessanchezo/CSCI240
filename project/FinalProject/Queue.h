@@ -14,9 +14,10 @@ public:
     int data;
     QueueNode* next;
 
-    QueueNode(int dataValue, QueueNode* nextNode = nullptr) {
-        data = dataValue;
-        next = nextNode;
+    QueueNode(int dataValue, QueueNode* nextNode = nullptr)
+    {
+	    data = dataValue;
+	    next = nextNode;
     }
 };
 
@@ -26,84 +27,98 @@ private:
     QueueNode* end;
 
 public:
-    Queue() {
-        front = nullptr;
-        end = nullptr;
+    Queue()
+    {
+	    front = nullptr;
+	    end = nullptr;
     }
 
-    virtual ~Queue() {
-        while (front) {
-            QueueNode* nodeToDelete = front;
-            front = front->next;
-            delete nodeToDelete;
-        }
+    virtual ~Queue()
+    {
+	    while (front)
+	    {
+		    QueueNode* nodeToDelete = front;
+		    front = front->next;
+		    delete nodeToDelete;
+	    }
     }
 
-    virtual bool Enqueue(int newData) override {
-        // Create a new node
-        QueueNode* newNode = new QueueNode(newData);
+    virtual bool Enqueue(int newData) override
+    {
+	    // Create a new node
+	    QueueNode* newNode = new QueueNode(newData);
 
-        // Append newNode to the end of the linked list
-        if (nullptr == front) {
-            front = newNode;
-        }
-        else {
-            end->next = newNode;
-        }
-        end = newNode;
+	    // Append newNode to the end of the linked list
+	    if (nullptr == front)
+	    {
+		    front = newNode;
+	    }
+	    else
+	    {
+		    end->next = newNode;
+	    }
+	    end = newNode;
 
-        return true;
+	    return true;
     }
 
-    virtual int Dequeue() override {
-        // Copy front node's data
-        QueueNode* dequeuedNode = front;
-        int dequeuedItem = front->data;
+    virtual int Dequeue() override
+    {
+	    // Copy front node's data
+	    QueueNode* dequeuedNode = front;
+	    int dequeuedItem = front->data;
 
-        // Remove front node
-        front = front->next;
-        delete dequeuedNode;
+	    // Remove front node
+	    front = front->next;
+	    delete dequeuedNode;
 
-        // If empty, assign end with nullptr
-        if (nullptr == front) {
-            end = nullptr;
-        }
+	    // If empty, assign end with nullptr
+	    if (nullptr == front)
+	    {
+		    end = nullptr;
+	    }
 
-        // Return dequeued item
-        return dequeuedItem;
+	    // Return dequeued item
+	    return dequeuedItem;
     }
 
-    virtual int GetLength() const override {
-        int length = 0;
-        QueueNode* node = front;
-        while (node) {
-            length++;
-            node = node->next;
-        }
-        return length;
+    virtual int GetLength() const override
+    {
+	    int length = 0;
+	    QueueNode* node = front;
+	    while (node)
+	    {
+		    length++;
+		    node = node->next;
+	    }
+	    return length;
     }
 
-    virtual bool IsEmpty() const override {
-        return nullptr == front;
+    virtual bool IsEmpty() const override
+    {
+	    return nullptr == front;
     }
 
-    virtual int Peek() const override {
-        return front->data;
+    virtual int Peek() const override
+    {
+	    return front->data;
     }
 
     virtual void Print(std::ostream& printStream = std::cout,
-        const std::string& separator = ", ") const override {
-        QueueNode* node = front;
-        if (node) {
-            // Front item is not preceded by separator
-            printStream << node->data;
-            node = node->next;
-        }
-        while (node) {
-            // Each item after the front is preceded by the separator
-            printStream << separator << node->data;
-            node = node->next;
-        }
+                       const std::string& separator = ", ") const override
+    {
+	    QueueNode* node = front;
+	    if (node)
+	    {
+		    printStream << node->data;
+		    node = node->next;
+	    }
+	    while (node)
+	    {
+		    printStream << separator << node->data;
+		    node = node->next;
+	    }
+		printStream << '\n';
     }
 };
 
