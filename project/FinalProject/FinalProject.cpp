@@ -32,11 +32,7 @@ int main()
 
 	while (go == 1)
 	{
-		cout << "enter new maze size (square) ";
-		cin >> square_size;
-		Maze new_maze(square_size, square_size);
-
-		maze.createMaze();
+		maze.remakeMaze();
 		maze.displayMaze();
 		cout << "\n solving...\n";
 		maze.solveMazeBFS();
