@@ -79,7 +79,6 @@ void Maze::remakeMaze() const
 		}
 	}
 	this->createMaze();
-
 }
 
 // Function to display the maze
@@ -139,10 +138,11 @@ bool Maze::solveMazeBFS()
 		int encoded = queue.Dequeue();
 		int currentX = encoded / cols;
 		int currentY = encoded % cols;
-		// Check if we reached the destination
+		// Check if reached the destination
 		if (currentX == rows - 1 && currentY == cols - 1)
 		{
 			std::cout << "Maze solved!" << '\n';
+			queue.Print();
 			return true;
 		}
 		// Possible directions: right, down, left, up
@@ -154,8 +154,10 @@ bool Maze::solveMazeBFS()
 			if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && (maze[newX][newY] == 0) && !visited[newX][newY])
 			{
 				queue.Enqueue(newX * cols + newY);
+				
 				// Encode new cell
 				visited[newX][newY] = true;
+				std::cout << "visited [" << newX << "][" << newY << "]" << '\n';
 			}
 		}
 	}
