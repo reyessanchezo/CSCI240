@@ -7,10 +7,9 @@
 #include "Stack.h"
 using namespace std;
 
-// Constructor to initialize the maze with given dimensions
 Maze::Maze(int r, int c) : rows(r), cols(c)
 {
-	maze = new int*[rows];
+	maze = new int* [rows];
 	for (int i = 0; i < rows; ++i)
 	{
 		maze[i] = new int[cols];
@@ -27,7 +26,7 @@ Maze::Maze()
 	rows = 1;
 	cols = 1;
 
-	maze = new int*[rows];
+	maze = new int* [rows];
 	for (int i = 0; i < rows; ++i)
 	{
 		maze[i] = new int[cols];
@@ -45,7 +44,6 @@ Maze::Maze(const Maze* cp_maze)
 	maze = cp_maze->maze;
 }
 
-// Destructor to free allocated memory
 Maze::~Maze()
 {
 	for (int i = 0; i < rows; ++i)
@@ -73,6 +71,11 @@ void Maze::createMaze() const
 void Maze::remakeMaze() const
 {
 	srand(time(nullptr));
+	/*
+	srand cause a bit of trouble, especially while waiting
+	for the main function to find a solvable maze
+	*/
+
 	for (int i = 0; i < rows; i++)
 	{
 		for (int j = 0; j < cols; j++)
@@ -84,7 +87,7 @@ void Maze::remakeMaze() const
 	maze[rows - 1][cols - 1] = 0; // Ensure end point is open
 }
 
-// Function to display the maze
+// display with # as walls and . as open spaces
 void Maze::displayMaze() const
 {
 	std::cout << '\n';
@@ -109,7 +112,6 @@ void Maze::displayMaze() const
 	}
 }
 
-// Function to set a specific cell in the maze
 void Maze::setCell(int r, int c, int value) const
 {
 	if (r >= 0 && r < rows && c >= 0 && c < cols)
@@ -119,14 +121,13 @@ void Maze::setCell(int r, int c, int value) const
 	}
 }
 
-// Function to get the value of a specific cell in the maze
 int Maze::getCell(int r, int c) const
 {
 	if (r >= 0 && r < rows && c >= 0 && c < cols)
 	{
 		return maze[r][c];
 	}
-	return -1; // Return -1 if out of bounds
+	return -1; // Return -1 if out of bounds :(
 }
 
 bool Maze::solveMazeBFS() const
@@ -134,7 +135,7 @@ bool Maze::solveMazeBFS() const
 	Queue queue;
 	vector<std::vector<bool>> visited(rows, std::vector<bool>(cols, false));
 	queue.Enqueue(0 * cols + 0); // store the start point
-	
+
 	visited[0][0] = true;
 	while (!queue.IsEmpty())
 	{
@@ -147,8 +148,8 @@ bool Maze::solveMazeBFS() const
 			std::cout << "Maze queue solved!" << '\n';
 			return true;
 		}
-		// Possible directions: right, down, left, up
-		int directions[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+		// try each right, down, left, up
+		int directions[4][2] = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} };
 		for (auto& dir : directions)
 		{
 			int newX = currentX + dir[0];
@@ -156,7 +157,7 @@ bool Maze::solveMazeBFS() const
 			if (newX >= 0 && newX < rows && newY >= 0 && newY < cols && (maze[newX][newY] == 0) && !visited[newX][newY])
 			{
 				queue.Enqueue(newX * cols + newY);
-				
+
 				// Encode new cell
 				visited[newX][newY] = true;
 			}
@@ -176,14 +177,14 @@ bool Maze::solveMazeDFS() const
 	{
 		int* encoded = stack.Pop();
 		int currentX = encoded[0] / cols;
-		int currentY = encoded[1] % cols;
+		int currentY = encoded[1] % cols; // extract current coordinates
 		// Check if reached the destination
 		if (currentX == rows - 1 && currentY == cols - 1)
 		{
 			std::cout << "Maze stack solved!" << '\n';
 			return true;
 		}
-		// Possible directions: right, down, left, up
+		// try each right, down, left, up
 		int directions[4][2] = { {0, 1}, {1, 0}, {0, -1}, {-1, 0} };
 		for (auto& dir : directions)
 		{
@@ -193,7 +194,7 @@ bool Maze::solveMazeDFS() const
 			{
 				stack.Push(newX, newY);
 
-				// Encode new cell
+				//track visited cells
 				visited[newX][newY] = true;
 			}
 		}

@@ -5,7 +5,7 @@
 #include <iostream>
 #include "StackADT.h"
 
-// Node to store an item in a linked-list-based stack
+// Linked-list stack node
 class StackNode {
 public:
     int dataX, dataY;
@@ -18,7 +18,7 @@ public:
     }
 };
 
-// Linked-list-based stack
+// Linked list stack
 class Stack : public StackADT {
 private:
     StackNode* top;
@@ -65,8 +65,8 @@ public:
     virtual int* Pop() override {
         // Copy top node's data
         StackNode* poppedNode = top;
-        int popped[2];
-    	popped[0] = top->dataX;
+        int* popped = new int[2]; //copilot recommendation
+        popped[0] = top->dataX;
         popped[1] = top->dataY;
 
         // Remove top node
@@ -79,19 +79,16 @@ public:
         return popped;
     }
 
-    // Prints stack items from top to bottom, with the separator string between
-    // each pair of items
+    // prints top to bottom
     virtual void Print(std::ostream& printStream = std::cout,
         const std::string& separator = " | ") const override {
         StackNode* node = top;
 
-        if (node) {
-            // Print first item with no separator
+        if (node) { // first node without separator
             printStream << node->dataX << "," << node->dataY;
             node = node->next;
         }
 
-        // Print remaining items, each preceded by the separator
         while (node) {
             printStream << separator << node->dataX << "," << node->dataY;
             node = node->next;

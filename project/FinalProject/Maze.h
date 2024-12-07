@@ -15,7 +15,7 @@ public:
 
     ~Maze();
 
-    //  create a random maze
+    //  randomly fill a maze
     void createMaze() const;
 
     void remakeMaze() const;
@@ -26,8 +26,10 @@ public:
 
     int getCell(int r, int c) const;
 
-	bool solveMazeBFS() const;
+    // solve using queue framework
+    bool solveMazeBFS() const;
 
+    // solve using stack framework
     bool solveMazeDFS() const;
 };
 

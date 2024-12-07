@@ -2,27 +2,29 @@
 Oscar Reyes-Sanchez
 CSCI 240
 Final Project
-Maze Solver using two frameworks (stack/queue, queue/array)
-Might include test for optimal path
+Maze Solver using two frameworks (stack, queue, array)
 */
 #include <iostream>
 #include "Maze.h"
-
-#include <chrono> 
+#include <chrono>  // timing
 using namespace std;
 
 
 
 int main()
 {
-	int square_size = 10;
+	int square_size = -1;
 	int go = 0;
 	bool sol = false;
-	
-	cout << "Testing...!\nDemo first, then loops and timing\n";
-	cout  << "enter maze size (square): \n";
 
+	cout << "Testing...!\nDemo first, then loops and timing\n";
+	cout << "enter maze size (square): \n";
 	cin >> square_size;
+
+	while (square_size < 1) {
+		cout << "must be greater than 0\n";
+		cin >> square_size;
+	}
 	Maze maze(square_size, square_size);
 
 	maze.createMaze();
@@ -45,14 +47,14 @@ int main()
 		cout << "Now that a solvable maze has been found, solve it with queue, then with stack and compare speeds." <<
 			'\n';
 
-
+		// time the queue framework
 		auto start = chrono::high_resolution_clock::now();
 		sol = maze.solveMazeBFS();
 		auto end = chrono::high_resolution_clock::now();
 		chrono::duration<double> queueDuration = end - start;
 		cout << "Time taken by queue: " << queueDuration.count() << " seconds" << '\n';
 
-
+		// time the stack framework
 		start = chrono::high_resolution_clock::now();
 		sol = maze.solveMazeDFS();
 		end = chrono::high_resolution_clock::now();
