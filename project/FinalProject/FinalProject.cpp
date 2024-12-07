@@ -8,7 +8,7 @@ Might include test for optimal path
 #include <iostream>
 #include "Maze.h"
 
-
+#include <chrono> 
 using namespace std;
 
 
@@ -18,8 +18,8 @@ int main()
 	int square_size = 10;
 	int go = 0;
 	bool sol = false;
-
-	cout << "Testing8...!\n";
+	
+	cout << "Testing...!\nDemo first, then loops and timing\n";
 	cout  << "enter maze size (square): \n";
 
 	cin >> square_size;
@@ -36,12 +36,29 @@ int main()
 	{
 		while (!sol)
 		{
-			maze.createMaze();
+			maze.remakeMaze();
 			maze.displayMaze();
-			cout << "\n remaking until solved...\n";
+			cout << "\n resetting until solvable...\n";
 			sol = maze.solveMazeBFS();
 		}
-		
+
+		cout << "Now that a solvable maze has been found, solve it with queue, then with stack and compare speeds." <<
+			'\n';
+
+
+		auto start = chrono::high_resolution_clock::now();
+		sol = maze.solveMazeBFS();
+		auto end = chrono::high_resolution_clock::now();
+		chrono::duration<double> queueDuration = end - start;
+		cout << "Time taken by queue: " << queueDuration.count() << " seconds" << '\n';
+
+
+		start = chrono::high_resolution_clock::now();
+		sol = maze.solveMazeDFS();
+		end = chrono::high_resolution_clock::now();
+		chrono::duration<double> stackDuration = end - start;
+		cout << "Time taken by stack: " << stackDuration.count() << " seconds" << '\n';
+
 		cout << "new maze? 1 for yes, 0 for no(exit): ";
 		cin >> go;
 		sol = false;
