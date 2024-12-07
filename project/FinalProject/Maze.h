@@ -27,6 +27,8 @@ public:
     int getCell(int r, int c) const;
 
 	bool solveMazeBFS() const;
+
+    bool solveMazeDFS() const;
 };
 
 #endif // MAZE_H
