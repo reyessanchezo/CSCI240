@@ -17,7 +17,7 @@ int main()
 {
 	int square_size = 10;
 	int go = 0;
-	bool sol = true;
+	bool sol = false;
 
 	cout << "Testing8...!\n";
 	cout  << "enter maze size (square): \n";
@@ -44,6 +44,7 @@ int main()
 		
 		cout << "new maze? 1 for yes, 0 for no(exit): ";
 		cin >> go;
+		sol = false;
 	}
 
 	cout << "\nAll done !!\n\n\n\n"; // lots of space for my output window
