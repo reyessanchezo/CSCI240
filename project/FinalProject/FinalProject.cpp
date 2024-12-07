@@ -19,7 +19,7 @@ int main()
 	int go = 0;
 	bool sol = true;
 
-	cout << "Testing640...!\n";
+	cout << "Testing8...!\n";
 	cout  << "enter maze size (square): \n";
 
 	cin >> square_size;
@@ -36,7 +36,7 @@ int main()
 	{
 		while (!sol)
 		{
-			maze.remakeMaze();
+			maze.createMaze();
 			maze.displayMaze();
 			cout << "\n remaking until solved...\n";
 			sol = maze.solveMazeBFS();
