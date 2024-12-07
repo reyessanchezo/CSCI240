@@ -16,9 +16,11 @@ using namespace std;
 int main()
 {
 	int square_size = 10;
-	int go = 1;
+	int go = 0;
+	bool sol = true;
 
-	cout << "Testing...!\n" << "enter maze size (square): \n";
+	cout << "Testing640...!\n";
+	cout  << "enter maze size (square): \n";
 
 	cin >> square_size;
 	Maze maze(square_size, square_size);
@@ -32,10 +34,14 @@ int main()
 
 	while (go == 1)
 	{
-		maze.remakeMaze();
-		maze.displayMaze();
-		cout << "\n solving...\n";
-		maze.solveMazeBFS();
+		while (!sol)
+		{
+			maze.remakeMaze();
+			maze.displayMaze();
+			cout << "\n remaking until solved...\n";
+			sol = maze.solveMazeBFS();
+		}
+		
 		cout << "new maze? 1 for yes, 0 for no(exit): ";
 		cin >> go;
 	}

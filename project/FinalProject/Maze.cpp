@@ -126,7 +126,7 @@ int Maze::getCell(int r, int c) const
 	return -1; // Return -1 if out of bounds
 }
 
-bool Maze::solveMazeBFS()
+bool Maze::solveMazeBFS() const
 {
 	Queue queue;
 	vector<std::vector<bool>> visited(rows, std::vector<bool>(cols, false));
